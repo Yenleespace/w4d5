@@ -30,14 +30,17 @@ end
 
 def largest_contiguous_subsum(list)
     sub_arr = []
-    (0...list.length - 1).each do |i|
-        pairs = []
-        (i...list.length - 1).each do |j|
+    (0...list.length).each do |i|
+        (i...list.length).each do |j|
             current_pair = list[i..j]
+            sub_arr << current_pair
         end
-        sub_arr << pairs
     end
-    sub_arr
+    largest = 0
+    new_arr = sub_arr.map do |sums|
+        sums.sum
+    end
+    new_arr.sort.last
 end
 
 list = [5, 3, -7]
