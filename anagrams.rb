@@ -44,7 +44,28 @@ end
 # p second_anagram?("elvis", "lives")    #=> true
 
 def third_anagram(string1, string2)
-    
+    sorted_str1 = jumble_sort(string1)
+    sorted_str2 = jumble_sort(string2)
+    sorted_str1 == sorted_str2
 end 
 
+def jumble_sort(str, alphabet = nil)
+    alphabet ||= ('a'..'z').to_a
+  return str if str.length < 2
+  
+  sorted = false
+  until sorted
+    sorted = true
+    (0...str.length-1).each do |i|
+      if alphabet.index(str[i]) > alphabet.index(str[i+1])
+        str[i], str[i+1] = str[i+1], str[i]
+        sorted = false
+      end
+    end
+  end
+  str
+end
+
+# p third_anagram("gizmo", "sally")    #=> false
+# p third_anagram("elvis", "lives")    #=> true
 
