@@ -69,3 +69,27 @@ end
 # p third_anagram("gizmo", "sally")    #=> false
 # p third_anagram("elvis", "lives")    #=> true
 
+def fourth_anagram?(string1, string2)
+    hash_1 = Hash.new(0)
+    hash_2 = Hash.new(0)
+    
+    string1.each_char { |char| hash_1[char] += 1 }
+    string2.each_char { |char| hash_2[char] += 1 }
+
+    hash_1 == hash_2
+end
+
+p fourth_anagram?("gizmo", "sally")    #=> false
+p fourth_anagram?("elvis", "lives")    #=> true
+
+def bonus_fourth_anagram?(string1, string2)
+    hash = Hash.new(0)
+    string1.each_char do |char|
+        hash[ele] += 1
+    end 
+
+    string2.each_char do |char|
+        hash[ele] += 1
+    end
+    hash.values.all? { |ele| ele.length == 2} 
+end
