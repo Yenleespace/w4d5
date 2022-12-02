@@ -43,3 +43,8 @@ end
 # p second_anagram?("gizmo", "sally")    #=> false
 # p second_anagram?("elvis", "lives")    #=> true
 
+def third_anagram(string1, string2)
+    
+end 
+
+
