@@ -28,37 +28,31 @@ end
 
 # Largest Contiguous Sub-sum
 
+#lines 34 - 39 dominates the bottom loops
 # def largest_contiguous_subsum(list)
 #     sub_arr = []
 #     (0...list.length).each do |i|
 #         (i...list.length).each do |j|
-#             current_pair = list[i..j]
+#             current_pair = list[i..j] #this is also n time
 #             sub_arr << current_pair
 #         end
 #     end
 #     largest = 0
 #     new_arr = sub_arr.map do |sums|
-#         sums.sum
+#         sums.sum #n
 #     end
 #     new_arr.sort.last
 # end
-#The time complexity is O(n^2) and quadratic
-list = [5, 3, -7]
+#The time complexity is O(n^3) and quadratic
+list = [5, 7, -15, 6, 8, 9]
 #    p  largest_contiguous_subsum(list) # => 8
 
-    # possible sub-sums
-    [5]           # => 5
-    [5, 3]        # => 8 --> we want this one
-    [5, 3, -7]    # => 1
-    [3]           # => 3
-    [3, -7]       # => -4
-    [-7]          # => -7
-
-def largest_contiguous_subsum(list)
-    largest = list.first
+def largest_contiguous_subsum(list) #[5, 7, -15, 6, 8]
+    largest = list.first #[5]
     largest_sum = 0
-    (1...list.length).each do |i|
-        if largest + list[i] > largest
+    (1...list.length).each do |i| #1
+        if largest + list[i] > largest_sum
+            largest = list[i - 1]
             largest_sum = largest + list[i]
         end
         # if list[i] > 
